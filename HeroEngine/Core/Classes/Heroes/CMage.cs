@@ -14,7 +14,7 @@ namespace HeroEngine.Core.Classes
 
     namespace HeroEngine.Core.Classes
     {
-        public class CMage : AHeroes
+        public class CMage : AHeroes 
         {
 
             public int LvlArcane { get; set; }
@@ -36,21 +36,32 @@ namespace HeroEngine.Core.Classes
             }
 
             //metodos
-            public override void Attack(AHeroes targeted, int damage)
+            public override void Attack(ACombatant target, int damage)
             {
-                Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
+                if (!IsAlive())
+                {
+                    Console.WriteLine($"{Name} está derrotado y no puede atacar");
+                    return;
+                }
 
-                targeted.TakeDamage(damage);
+                if (!target.IsAlive())
+                {
+                    Console.WriteLine($"{target.Name} ya está derrotado");
+                    return;
+                }
+
+                Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
+                target.TakeDamage(damage);
             }
 
             public override void TakeDamage(int damage)
             {
-                int reducedDamage = damage;
-                if (reducedDamage < 0) reducedDamage = 0;
+                if (!IsAlive())
+                    return;
 
-                Health -= reducedDamage; //poner -= es lo mismo que poner Health = Health - reducedDamage
-
+                Health -= damage;
                 Health = Math.Max(0, Health);
+
                 Console.WriteLine($"{Name} ha recibido {damage} de daño, vida restante: {Health}");
             }
         }

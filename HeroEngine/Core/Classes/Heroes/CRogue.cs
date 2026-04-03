@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeroEngine.Core.Classes
+namespace HeroEngine.Core.Classes.Heroes
 {
-    public class CRogue : AHeroes
+    public class CRogue : ACombatant
     {
         public CRogue(string name, int health, int lvl) : base(name, health, lvl)
         {
@@ -22,12 +22,22 @@ namespace HeroEngine.Core.Classes
         }
 
         //metodos
-        public override void Attack(AHeroes targeted, int damage)
+        public override void Attack(ACombatant target, int damage)
         {
-            int finalDamage = damage * 2;
-            Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
+            if (!IsAlive())
+            {
+                Console.WriteLine($"{Name} está derrotado y no puede atacar");
+                return;
+            }
 
-            targeted.TakeDamage(finalDamage);
+            if (!target.IsAlive())
+            {
+                Console.WriteLine($"{target.Name} ya está derrotado");
+                return;
+            }
+
+            Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
+            target.TakeDamage(damage);
         }
 
         public override void TakeDamage(int damage)
