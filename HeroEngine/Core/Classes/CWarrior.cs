@@ -25,15 +25,27 @@ namespace HeroEngine.Core.Classes
         }
 
         //metodos
-        public override void Attack()
+        public override void Attack(AHeroes targeted, int damage)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
+
+            targeted.TakeDamage(damage);
         }
 
         public override void TakeDamage(int damage)
         {
             int reducedDamage = damage - Armor;
-            Console.WriteLine($"{Name} ha recibido {damage} de daño pero la armadura reduce {reducedDamage}, vida restante: {Health}");
+            if (reducedDamage < 0) reducedDamage = 0;
+            Health -= reducedDamage; //poner -= es lo mismo que poner Health =
+                                     //Health - reducedDamage
+
+            /* el Health = Math.Max(0, Health) es lo mismo que el if (Health < 0)
+            {
+                Health = 0;
+            }*/
+            Health = Math.Max(0, Health);
+
+            Console.WriteLine($"{Name} ha recibido {damage} de daño pero la armadura reduce {Armor}, vida restante: {Health}");
         }
     }
 }

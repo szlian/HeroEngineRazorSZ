@@ -20,7 +20,7 @@ namespace HeroEngine.Core.Classes
             Lvl = lvl;
         }
         
-        public abstract void Attack();
+        public abstract void Attack(AHeroes targeted, int damage);
         public abstract void TakeDamage(int damage);
 
 
