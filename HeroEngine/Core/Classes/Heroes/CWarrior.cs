@@ -43,8 +43,7 @@ namespace HeroEngine.Core.Classes.Heroes
             target.TakeDamage(damage);
         }
 
-        //poner -= es lo mismo que poner Health =
-        //Health - reducedDamage
+        //poner -= es lo mismo que poner Health = Health - reducedDamage
 
         /* el Health = Math.Max(0, Health) es lo mismo que el if (Health < 0)
         {

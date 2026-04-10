@@ -2,6 +2,8 @@
 using HeroEngine.Core.Classes.Hability;
 using HeroEngine.Core.Classes.HeroEngine.Core.Classes;
 using HeroEngine.Core.Classes.Heroes;
+using HeroEngine.Core.Classes.Enemies;
+
 using HeroEngine.Core.Classes.Interface;
 
 public class Program
@@ -12,12 +14,20 @@ public class Program
         CWarrior warrior1 = new CWarrior("King Denas", 120, 1, 120);
         warrior1.Present();
 
+        // Create instances of enemies
+        CBosses boss1 = new CBosses("Asgore", 150, 20);
+        boss1.Present();
+
         CMage mage1 = new CMage("Vez'Nan", 80, 1, 100, 300);
         mage1.Present();
 
         // Simulate an attack
+        Console.WriteLine("-------- Attack Heroes Phase -------");
         warrior1.Attack(mage1, 90);
         mage1.Attack(warrior1, 120);
+
+        Console.WriteLine("-------- Attack Enemy Phase -------");
+        warrior1.Attack(boss1, 120);
 
         // Create an instance of an ability
         Console.WriteLine("-----------------------------------");
@@ -29,7 +39,7 @@ public class Program
 
         warrior1.AddAbility(ability1);
         warrior1.AddAbility(ability2);
-        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("-----------Hability List -----------");
         warrior1.ListAbilities();
         Console.WriteLine("-------------------------------------");
 
