@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Heroes
 {
-    public class CRogue : ACombatant
+    public class CRogue : AHeroes
     {
         public CRogue(string name, int health, int lvl) : base(name, health, lvl)
         {

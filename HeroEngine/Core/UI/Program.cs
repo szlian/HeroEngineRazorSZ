@@ -47,5 +47,24 @@ public class Program
 
         warrior1.UseAbility("Thunder Smash");
         warrior1.UseAbility("Iron Fortress");
+
+
+        CRogue Rogue1 = new CRogue ("Phoenix Wright", 100, 1);
+        CBosses Boss2 = new CBosses ("Flowey", 150, 50);
+
+        CWarrior Warrior2 = new CWarrior ("Guts", 150, 1, 150);
+        CBosses Boss3 = new CBosses ("Doom", 200, 70);
+
+        //Duelo entre Rogue1 y Boss2, 1 vs 1
+        /*Console.WriteLine("----------- Duel Phase, fight for your honor ------------");
+        CTurnBattle battle = new CTurnBattle(Rogue1, Boss2);
+        Rogue1.Present();
+        Boss2.Present();
+        battle.BattleStart(100, 30);*/
+        Console.WriteLine("----------- Duel Phase, fight for your honor ------------");
+        CTurnBattle battle2 = new CTurnBattle(Warrior2, Boss3);
+        warrior1.Present();
+        Boss3.Present();
+        battle2.BattleStart(100, 30);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Enemies
 {
-    public class CBosses : ACombatant
+    public class CBosses : AEnemies
     {
         public CBosses(string name, int health, int lvl) : base(name, health, lvl)
         {

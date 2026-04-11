@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Enemies
 {
-    public class CMinions : ACombatant
+    public class CMinions : AEnemies
     {
         public CMinions(string name, int health, int lvl) : base(name, health, lvl)
         {

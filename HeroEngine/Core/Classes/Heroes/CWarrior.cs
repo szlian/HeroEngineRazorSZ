@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Heroes
 {
+    //Poner AHeroes en vez de ACombatants es debido que el AHeroes hereda de ACombatants,
+    //por lo que se pueden usar los metodos de ACombatants en AHeroes,
+    //pero no al reves, ya que ACombatants no tiene los metodos de AHeroes
     public class CWarrior: AHeroes
     {
         public int Armor { get; set; }
@@ -51,14 +54,15 @@ namespace HeroEngine.Core.Classes.Heroes
         }*/
         public override void TakeDamage(int damage)
         {
-            if (!IsAlive())
-                return;
+            if (!IsAlive()) return;
 
-            Health -= damage;
+            // Reducción por armadura (por ejemplo, resta la armadura, mínimo 1 de daño)
+            int reducedDamage = Math.Max(1, damage - Armor);
+            Health -= reducedDamage;
             Health = Math.Max(0, Health);
 
-            Console.WriteLine($"{Name} ha recibido {damage} de daño, vida restante: {Health}");
+            Console.WriteLine($"{Name} recibe {reducedDamage} de daño (armadura {Armor} redujo {damage - reducedDamage}). Vida restante: {Health}");
         }
-    
+
     }
 }
