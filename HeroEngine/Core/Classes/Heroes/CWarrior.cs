@@ -27,25 +27,6 @@ namespace HeroEngine.Core.Classes.Heroes
             Console.WriteLine("Battle cry: Come on, you wanna live forever?");
         }
 
-        //metodos
-        public override void Attack(ACombatant target, int damage)
-        {
-            if (!IsAlive())
-            {
-                Console.WriteLine($"{Name} está derrotado y no puede atacar");
-                return;
-            }
-
-            if (!target.IsAlive())
-            {
-                Console.WriteLine($"{target.Name} ya está derrotado");
-                return;
-            }
-
-            Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
-            target.TakeDamage(damage);
-        }
-
         //poner -= es lo mismo que poner Health = Health - reducedDamage
 
         /* el Health = Math.Max(0, Health) es lo mismo que el if (Health < 0)

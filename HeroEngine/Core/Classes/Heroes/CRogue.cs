@@ -20,34 +20,11 @@ namespace HeroEngine.Core.Classes.Heroes
             Console.WriteLine($"Health:{Health}");
 
         }
-
-        //metodos
-        public override void Attack(ACombatant target, int damage)
+        protected override int CalculateDamage()
         {
-            if (!IsAlive())
-            {
-                Console.WriteLine($"{Name} está derrotado y no puede atacar");
-                return;
-            }
-
-            if (!target.IsAlive())
-            {
-                Console.WriteLine($"{target.Name} ya está derrotado");
-                return;
-            }
-
-            Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
-            target.TakeDamage(damage);
+            return Lvl * 6 + 20; // crítico de rogue
         }
 
-        public override void TakeDamage(int damage)
-        {
-            int reducedDamage = damage;
-            if (reducedDamage < 0) reducedDamage = 0;
-            Health -= reducedDamage; //poner -= es lo mismo que poner Health = Health - reducedDamage
 
-            Health = Math.Max(0, Health);
-            Console.WriteLine($"{Name} ha recibido {damage}, vida restante: {Health}");
-        }
     }
 }

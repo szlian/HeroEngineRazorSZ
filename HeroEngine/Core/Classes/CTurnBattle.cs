@@ -13,8 +13,13 @@ namespace HeroEngine.Core.Classes
             this.enemigo = enemigo;
         }
 
-        // El método espera los dos daños que se usarán en cada turno
-        public void BattleStart(int heroDamage, int enemyDamage)
+        /// <summary>
+        /// El método espera los dos daños que se usarán en cada turno, el turno se alternará entre el héroe y el enemigo, y cada uno atacará al otro utilizando el daño especificado. El método continuará hasta que uno de los combatientes quede sin salud, momento en el cual se declarará al ganador. Además, después de cada ataque, 
+        /// se mostrará la salud actual de ambos combatientes para que el jugador pueda seguir el progreso de la batalla.
+        /// </summary>
+        /// <param name="heroDamage">El daño que infligirá el héroe en su turno</param>
+        /// <param name="enemyDamage">El daño que infligirá el enemigo en su turno</param>
+        public void BattleStart()
         {
             int turno = 1; // 1 = héroe, 2 = enemigo
 
@@ -23,13 +28,13 @@ namespace HeroEngine.Core.Classes
                 if (turno == 1)
                 {
                     Console.WriteLine($"\n{heroe.Name} ataca!");
-                    heroe.Attack(enemigo, heroDamage);
+                    heroe.Attack(enemigo);
                     turno = 2;
                 }
                 else
                 {
                     Console.WriteLine($"\n{enemigo.Name} ataca!");
-                    enemigo.Attack(heroe, enemyDamage);
+                    enemigo.Attack(heroe);
                     turno = 1;
                 }
 
@@ -41,3 +46,4 @@ namespace HeroEngine.Core.Classes
         }
     }
 }
+

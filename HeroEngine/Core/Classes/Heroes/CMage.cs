@@ -35,36 +35,10 @@ namespace HeroEngine.Core.Classes
                 Console.WriteLine($"Mana:{Mana}");
             }
 
-            //metodos
-            public override void Attack(ACombatant target, int damage)
-            {
-                if (!IsAlive())
-                {
-                    Console.WriteLine($"{Name} está derrotado y no puede atacar");
-                    return;
-                }
+            
 
-                if (!target.IsAlive())
-                {
-                    Console.WriteLine($"{target.Name} ya está derrotado");
-                    return;
-                }
-
-                Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
-                target.TakeDamage(damage);
-            }
-
-            public override void TakeDamage(int damage)
-            {
-                if (!IsAlive())
-                    return;
-
-                Health -= damage;
-                Health = Math.Max(0, Health);
-
-                Console.WriteLine($"{Name} ha recibido {damage} de daño, vida restante: {Health}");
-            }
         }
     }
-
 }
+
+

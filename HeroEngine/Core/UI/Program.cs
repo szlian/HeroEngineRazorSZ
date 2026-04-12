@@ -13,7 +13,8 @@ public class Program
         // Create instances of heroes
         CWarrior warrior1 = new CWarrior("King Denas", 120, 1, 120);
         warrior1.Present();
-
+        CRogue rogue1 = new CRogue("Luna", 100, 10);
+        rogue1.Present();
         // Create instances of enemies
         CBosses boss1 = new CBosses("Asgore", 150, 20);
         boss1.Present();
@@ -23,11 +24,12 @@ public class Program
 
         // Simulate an attack
         Console.WriteLine("-------- Attack Heroes Phase -------");
-        warrior1.Attack(mage1, 90);
-        mage1.Attack(warrior1, 120);
+        warrior1.Attack(mage1);
+        mage1.Attack(warrior1);
+        rogue1.Attack(boss1);
 
         Console.WriteLine("-------- Attack Enemy Phase -------");
-        warrior1.Attack(boss1, 120);
+        warrior1.Attack(boss1);
 
         // Create an instance of an ability
         Console.WriteLine("-----------------------------------");
@@ -62,9 +64,9 @@ public class Program
         Boss2.Present();
         battle.BattleStart(100, 30);*/
         Console.WriteLine("----------- Duel Phase, fight for your honor ------------");
-        CTurnBattle battle2 = new CTurnBattle(Warrior2, Boss3);
-        warrior1.Present();
+        CTurnBattle battle2 = new CTurnBattle(rogue1, Boss3);
+        rogue1.Present();
         Boss3.Present();
-        battle2.BattleStart(100, 30);
+        battle2.BattleStart();
     }
 }

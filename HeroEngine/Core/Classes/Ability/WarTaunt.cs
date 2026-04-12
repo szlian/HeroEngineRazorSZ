@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Hability
 {
+    /// <summary>
+    /// Clase heredado de AbilityBase, representa la habilidad "War Taunt"
+    /// </summary>
     public class WarTaunt : AbilityBase
     {
+        //El variable tiene el _ en su nombre para saber que es un campo privado
         private int _agro = 20;
         public override string Name => "WarTaunt";
 

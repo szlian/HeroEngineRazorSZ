@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Hability
 {
+    /// <summary>
+    /// Clase heredado de AbilityBase, representa la habilidad "Second Wind"
+    /// </summary>
     public class SecondWind : AbilityBase
     {
         private int _healing = 50;

@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Hability
 {
+    /// <summary>
+    /// Clase heredado de AbilityBase, representa la habilidad "Iron Fortress", que es una habilidad de
+    /// defensa que aumenta la defensa del héroe al activarse
+    /// utilizando el poder de las piedras para fortalecer el cuerpo del héroe.
+    /// </summary>
     public class IronFortress : AbilityBase
     {
         private int _defense = 30;

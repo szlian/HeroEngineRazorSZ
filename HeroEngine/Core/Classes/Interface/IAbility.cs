@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Interface
 {
+
+    /// <summary>
+    /// El interfaz de IAbility define la funcionalidad base para una habilidad que puede ser utilizada por un héroe, incluyendo propiedades para el nombre, tipo, rareza y coste, así como un método para ejecutar la habilidad.
+    /// </summary>
     public interface IAbility
     {
         string Name { get; }

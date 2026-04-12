@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes
 {
+
+    /// <summary>
+    /// Clase heredado de AbilityBase, representa la habilidad "Thunder Smash"
+    /// </summary>
     public class ThunderSmash : AbilityBase
     {
         private int _damage = 95;

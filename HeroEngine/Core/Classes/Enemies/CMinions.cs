@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Enemies
 {
+    /// <summary>
+    /// La clase CMinions representa a los esbirros enemigos en el juego. Hereda de la clase AEnemies
+    /// </summary>
     public class CMinions : AEnemies
     {
+
+        /// <summary>
+        /// Constructor de la clase CMinions, se encarga de inicializar los atributos Name, Health y Lvl utilizando el constructor de la clase padre AEnemies
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="health"></param>
+        /// <param name="lvl"></param>
         public CMinions(string name, int health, int lvl) : base(name, health, lvl)
         {
         }
@@ -17,29 +27,7 @@ namespace HeroEngine.Core.Classes.Enemies
             Console.WriteLine($"Level:{Lvl}");
             Console.WriteLine($"Health:{Health}");
         }
-        public override void Attack(ACombatant target, int damage)
-        {
-            if (!IsAlive())
-            {
-                Console.WriteLine($"{Name} está derrotado y no puede atacar");
-                return;
-            }
-            if (!target.IsAlive())
-            {
-                Console.WriteLine($"{target.Name} ya está derrotado");
-                return;
-            }
-            Console.WriteLine($"{Name} ataca infligiendo {damage} de daño");
-            target.TakeDamage(damage);
-        }
-        public override void TakeDamage(int damage)
-        {
-            if (!IsAlive())
-                return;
-            Health -= damage;
-            Health = Math.Max(0, Health);
-            Console.WriteLine($"{Name} ha recibido {damage}, vida restante: {Health}");
-        }
+        
     }
 }
 
