@@ -25,7 +25,6 @@ Some heroes also have special abilities that can:
 - Increase defense
 - Control enemies
 
----
 
 ## 🧪 Test Examples (Game Simulation)
 
@@ -73,4 +72,3 @@ The project includes a UML class diagram that shows:
 ### Run steps
 1. Open the project in Visual Studio
 2. Select the `HeroEngine` project
-
