@@ -8,23 +8,23 @@ namespace HeroEngine.Core.Classes
 {
 
     /// <summary>
-    /// Clase hijo de ACombatant, a diferencia de los heroes de momento al menos no tienene habilidades
+    /// Child class of ACombatant. Unlike heroes, at least for now, they do not have abilities.
     /// </summary>
     public abstract class AEnemies : ACombatant
     {
 
         /// <summary>
-        /// Constructor de la clase AEnemies, se encarga de inicializar los atributos Name, Health y Lvl utilizando el constructor de la clase padre ACombatant
+        /// Constructor of the AEnemies class, responsible for initializing Name, Health, and Lvl using the base class (ACombatant) constructor.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="health"></param>
         /// <param name="lvl"></param>
         public AEnemies(string name, int health, int lvl) : base(name, health, lvl)
         {
-            //Recordar que el constructor de la clase padre ACombatant se encarga
-            //de inicializar los atributos Name, Health y Lvl,
-            //por lo que no es necesario volver a declararlos aquí. Simplemente
-            //llamamos al constructor de la clase padre con los parámetros correspondientes.
+            // Remember that the constructor of the parent class ACombatant is responsible
+            // for initializing the Name, Health, and Lvl attributes,
+            // so it is not necessary to redeclare them here. We simply
+            // call the base class constructor with the corresponding parameters.
         }
     }
 }

@@ -9,23 +9,23 @@ namespace HeroEngine.Core.Classes
 {
 
     /// <summary>
-    /// Clase heredado de ACombatant, representa a los héroes del juego, y tiene un diccionario para almacenar sus habilidades,
+    /// Class inherited from ACombatant, represents the heroes in the game, and contains a dictionary to store their abilities.
     /// </summary>
     public abstract class AHeroes : ACombatant
     {
-        // Dictionary para almacenar las habilidades del héroe, con el nombre de la habilidad como clave
+        // Dictionary to store the hero's abilities, using the ability name as the key
         private Dictionary<string, IAbility> abilities = new Dictionary<string, IAbility>();
 
 
         /// <summary>
-        /// La funcion AddAbility se encarga de agregar una habilidad al héroe, verificando primero si el
-        /// héroe ya tiene una habilidad con el mismo nombre para evitar duplicados. 
-        /// Si la habilidad no existe, se agrega al diccionario de habilidades del héroe utilizando el nombre de la habilidad como clave.
+        /// The AddAbility function adds an ability to the hero, first checking if the hero already has
+        /// an ability with the same name to avoid duplicates.
+        /// If the ability does not exist, it is added to the hero's ability dictionary using the ability name as the key.
         /// </summary>
-        /// <param name="ability">La habilidad que se desea agregar al héroe</param>
+        /// <param name="ability">The ability to be added to the hero</param>
         public void AddAbility(IAbility ability)
         {
-            //El ConstainsKey verifica si el diccionario ya contiene una habilidad con el mismo nombre, evitando así agregar habilidades duplicadas
+            // ContainsKey checks if the dictionary already contains an ability with the same name, preventing duplicates
             if (!abilities.ContainsKey(ability.Name))
             {
                 abilities.Add(ability.Name, ability);
@@ -34,13 +34,13 @@ namespace HeroEngine.Core.Classes
 
 
         /// <summary>
-        /// Muestra una lista de las habilidades del héroe ordenadas por rareza, desde la más rara hasta la más común.
+        /// Displays a list of the hero's abilities ordered by rarity, from rarest to most common.
         /// </summary>
         public void ListAbilities()
         {
             var ordered = abilities.Values.OrderByDescending(a => a.Rarity);
 
-            //Este foreach recorre la lista de habilidades ordenadas y muestra su información, incluyendo la rareza, el nombre, el tipo y el costo de cada habilidad
+            // This foreach iterates through the ordered abilities list and displays their information, including rarity, name, type, and cost
             foreach (var a in ordered)
             {
                 Console.WriteLine($"[{a.Rarity}] {a.Name} | Type: {a.Type} | Cost: {a.Cost}");
@@ -49,38 +49,38 @@ namespace HeroEngine.Core.Classes
 
 
         /// <summary>
-        /// La funcion de UseAbility se encarga de ejecutar una habilidad específica del héroe, identificada por su nombre.
+        /// The UseAbility function executes a specific ability of the hero, identified by its name.
         /// </summary>
-        /// <param name="abilityName">El nombre de la habilidad que se desea ejecutar</param>
+        /// <param name="abilityName">The name of the ability to execute</param>
         public void UseAbility(string abilityName)
         {
-            //El TryGetValue intenta obtener la habilidad del diccionario utilizando el nombre proporcionado, y si la habilidad existe, se ejecuta su método ExecuteAbility pasando el nombre del héroe como argumento
+            // TryGetValue attempts to retrieve the ability from the dictionary using the provided name, and if it exists, it executes its ExecuteAbility method passing the hero's name as an argument
             if (abilities.TryGetValue(abilityName, out IAbility ability))
             {
-                //En vez de solo Name, pasemos todo el héroe, para que la habilidad pueda interactuar con las propiedades del héroe, como su salud, nivel, etc.
+                // Instead of just Name, we pass the whole hero, so the ability can interact with the hero's properties such as health, level, etc.
                 ability.ExecuteAbility(this.Name);
             }
         }
 
-        //esto lo tenia declarado ya que AHeroes antes era el clase padre,
-        //ahora lo oculto porque ya se esta accediendo a otra clase padre, el ACombatant
-
+        // This was previously declared because AHeroes used to be the parent class,
+        // now it is hidden because we are already using another parent class, ACombatant.
 
 
         /// <summary>
-        /// El constructor de la clase AHeroes se encarga de inicializar los atributos heredados de la clase ACombatant, como el nombre, la salud y el nivel del héroe
+        /// The constructor of the AHeroes class initializes the attributes inherited from the ACombatant class, such as name, health, and level of the hero.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="health"></param>
         /// <param name="lvl"></param>
-        public AHeroes (string name, int health, int lvl) : base(name, health, lvl)
+        public AHeroes(string name, int health, int lvl) : base(name, health, lvl)
         {
-            /*Ignoramos atributo ya que el padre ya se encarga de inicializarlo, y lo hacemos con el base para llamar al constructor de la clase padre
+            /* We ignore attributes here because the parent already handles initialization,
+            and we use base to call the parent class constructor.
+
             Name = name;
             Health = health * lvl ;
             Lvl = lvl;
             */
-
         }
 
     }

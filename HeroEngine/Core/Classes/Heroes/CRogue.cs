@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Heroes
 {
+    /// <summary>
+    /// The CRogue class represents a rogue hero in the game. It inherits from the AHeroes class.
+    /// </summary>
     public class CRogue : AHeroes
     {
         public CRogue(string name, int health, int lvl) : base(name, health, lvl)
@@ -20,11 +23,10 @@ namespace HeroEngine.Core.Classes.Heroes
             Console.WriteLine($"Health:{Health}");
 
         }
+
         protected override int CalculateDamage()
         {
-            return Lvl * 6 + 20; // crítico de rogue
+            return Lvl * 6 + 20; // rogue critical damage
         }
-
-
     }
 }

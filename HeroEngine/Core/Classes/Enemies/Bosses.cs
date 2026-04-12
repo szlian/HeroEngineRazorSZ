@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace HeroEngine.Core.Classes.Enemies
 {
     /// <summary>
-    /// La clase CBosses representa a los jefes enemigos en el juego. Hereda de la clase AEnemies
+    /// The CBosses class represents the boss enemies in the game. It inherits from the AEnemies class.
     /// </summary>
     public class CBosses : AEnemies
     {
 
         /// <summary>
-        /// Constructor de la clase CBosses, se encarga de inicializar los atributos Name, Health y Lvl utilizando el constructor de la clase padre AEnemies
+        /// Constructor of the CBosses class, responsible for initializing the Name, Health, and Lvl attributes using the base class (AEnemies) constructor.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="health"></param>
@@ -21,6 +21,7 @@ namespace HeroEngine.Core.Classes.Enemies
         public CBosses(string name, int health, int lvl) : base(name, health, lvl)
         {
         }
+
         public void Present()
         {
             Console.WriteLine($"Name:{Name}");
@@ -29,4 +30,3 @@ namespace HeroEngine.Core.Classes.Enemies
         }
     }
 }
-

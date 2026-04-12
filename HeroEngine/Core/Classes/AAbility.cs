@@ -10,10 +10,12 @@ namespace HeroEngine.Core.Classes
 {
 
     /// <summary>
-    /// Define la funcionalidad base para una habilidad que puede ser utilizada por un héroe
+    /// Defines the base functionality for an ability that can be used by a hero.
     /// </summary>
-    /// <remarks>Esta clase abstracta proporciona la interfaz común para todas las habilidades, incluyendo
-    /// propiedades para el nombre, tipo, rareza y coste, así como un método para ejecutar la habilidad</remarks>
+    /// <remarks>
+    /// This abstract class provides the common interface for all abilities, including
+    /// properties for name, type, rarity, and cost, as well as a method to execute the ability.
+    /// </remarks>
     public abstract class AbilityBase : IAbility
     {
         public abstract string Name { get; }
@@ -23,7 +25,7 @@ namespace HeroEngine.Core.Classes
 
 
         /// <summary>
-        /// Este funcion es para ejecutar la habilidad, y se implementará en cada clase hijo
+        /// This function is used to execute the ability, and it will be implemented in each child class.
         /// </summary>
         /// <param name="heroAName"></param>
         public abstract void ExecuteAbility(string heroAName);

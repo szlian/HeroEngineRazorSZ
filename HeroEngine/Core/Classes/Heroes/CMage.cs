@@ -14,13 +14,17 @@ namespace HeroEngine.Core.Classes
 
     namespace HeroEngine.Core.Classes
     {
-        public class CMage : AHeroes 
+
+        /// <summary>
+        /// The CMage class represents a mage hero in the game. It inherits from the AHeroes class.
+        /// </summary>
+        public class CMage : AHeroes
         {
 
             public int LvlArcane { get; set; }
             public int Mana { get; set; }
 
-            public CMage (string name, int health, int lvl, int lvlArcane, int mana) : base(name, health, lvl)
+            public CMage(string name, int health, int lvl, int lvlArcane, int mana) : base(name, health, lvl)
             {
                 LvlArcane = lvlArcane;
                 Mana = mana;
@@ -35,10 +39,8 @@ namespace HeroEngine.Core.Classes
                 Console.WriteLine($"Mana:{Mana}");
             }
 
-            
+
 
         }
     }
 }
-
-

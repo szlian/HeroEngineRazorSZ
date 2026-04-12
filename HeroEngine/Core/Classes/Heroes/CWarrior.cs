@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes.Heroes
 {
-    //Poner AHeroes en vez de ACombatants es debido que el AHeroes hereda de ACombatants,
-    //por lo que se pueden usar los metodos de ACombatants en AHeroes,
-    //pero no al reves, ya que ACombatants no tiene los metodos de AHeroes
-    public class CWarrior: AHeroes
+    // Using AHeroes instead of ACombatants is because AHeroes inherits from ACombatants,
+    // so you can use the methods from ACombatants in AHeroes,
+    // but not the other way around, since ACombatants does not have the methods of AHeroes.
+
+
+    /// <summary>
+    /// The CWarrior class represents a warrior hero in the game. It inherits from the AHeroes class.
+    /// </summary>
+    public class CWarrior : AHeroes
     {
         public int Armor { get; set; }
-        public CWarrior(string name, int health, int lvl, int armor) : base (name, health, lvl)
+
+        public CWarrior(string name, int health, int lvl, int armor) : base(name, health, lvl)
         {
             Armor = armor;
         }
@@ -27,9 +33,10 @@ namespace HeroEngine.Core.Classes.Heroes
             Console.WriteLine("Battle cry: Come on, you wanna live forever?");
         }
 
-        //poner -= es lo mismo que poner Health = Health - reducedDamage
+        // Using -= is the same as writing Health = Health - reducedDamage
 
-        /* el Health = Math.Max(0, Health) es lo mismo que el if (Health < 0)
+        /* Health = Math.Max(0, Health) is the same as:
+        if (Health < 0)
         {
             Health = 0;
         }*/
@@ -37,12 +44,12 @@ namespace HeroEngine.Core.Classes.Heroes
         {
             if (!IsAlive()) return;
 
-            // Reducción por armadura (por ejemplo, resta la armadura, mínimo 1 de daño)
+            // Damage reduction from armor (for example, subtract armor, minimum 1 damage)
             int reducedDamage = Math.Max(1, damage - Armor);
             Health -= reducedDamage;
             Health = Math.Max(0, Health);
 
-            Console.WriteLine($"{Name} recibe {reducedDamage} de daño (armadura {Armor} redujo {damage - reducedDamage}). Vida restante: {Health}");
+            Console.WriteLine($"{Name} takes {reducedDamage} damage (armor {Armor} reduced {damage - reducedDamage}). Remaining health: {Health}");
         }
 
     }

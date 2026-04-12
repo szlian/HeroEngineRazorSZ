@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace HeroEngine.Core.Classes
 {
     /// <summary>
-    /// Clase padre, tiene los atributos y métodos comunes para todos los combatientes, 
-    /// como el nombre, la salud, el nivel, y las funciones para atacar, saber si esta vivo y recibir daño
-    /// todo sus hijos, los heroes y los enemigos deberan de implementar 
+    /// Base class that contains the common attributes and methods for all combatants,
+    /// such as name, health, level, and functions to attack, check if alive, and take damage.
+    /// All its children, heroes and enemies, must implement these behaviors.
     /// </summary>
     public abstract class ACombatant
     {
@@ -18,7 +18,7 @@ namespace HeroEngine.Core.Classes
         public int Lvl { get; set; }
 
         /// <summary>
-        /// Constructor de la clase ACombatant, se encarga de inicializar los atributos Name, Health y Lvl
+        /// Constructor of the ACombatant class, responsible for initializing Name, Health, and Lvl.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="health"></param>
@@ -31,9 +31,9 @@ namespace HeroEngine.Core.Classes
         }
 
         /// <summary>
-        /// Funcion para verificar si el combatiente sigue vivo, es decir, si su salud es mayor a 0
+        /// Function to check if the combatant is still alive, meaning its health is greater than 0.
         /// </summary>
-        /// <returns>True si el combatiente sigue vivo, False en caso contrario </returns>
+        /// <returns>True if the combatant is alive, False otherwise.</returns>
         public bool IsAlive()
         {
             return Health > 0;
@@ -41,10 +41,10 @@ namespace HeroEngine.Core.Classes
 
 
         /// <summary>
-        /// Este funcion sirve para atacar, el variable target es para elegir a quien atacar,
-        /// y el parametro damage indica la cantidad de daño que se desea infligir.
+        /// This function is used to attack. The target parameter specifies who will be attacked,
+        /// and the damage parameter indicates the amount of damage to inflict.
         /// </summary>
-        /// <param name="target">El combatiente que será atacado</param>
+        /// <param name="target">The combatant that will be attacked</param>
         public virtual void Attack(ACombatant target)
         {
             if (!IsAlive() || !target.IsAlive())
@@ -56,17 +56,18 @@ namespace HeroEngine.Core.Classes
         }
 
         /// <summary>
-        /// Calcular el daño a proporcion del nivel
+        /// Calculates damage based on the level.
         /// </summary>
         /// <returns></returns>
         protected virtual int CalculateDamage()
         {
             return Lvl * 5;
         }
+
         /// <summary>
-        /// La funcion TakeDamage se encarga de recibir el daño infligido por un ataque, y restarlo a la salud del combatiente.
+        /// The TakeDamage function handles receiving damage from an attack and subtracts it from the combatant's health.
         /// </summary>
-        /// <param name="damage">La cantidad de daño que se recibe</param>
+        /// <param name="damage">The amount of damage received</param>
         public virtual void TakeDamage(int damage)
         {
             if (!IsAlive()) return;

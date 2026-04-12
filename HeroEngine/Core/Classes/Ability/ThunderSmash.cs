@@ -10,7 +10,7 @@ namespace HeroEngine.Core.Classes
 {
 
     /// <summary>
-    /// Clase heredado de AbilityBase, representa la habilidad "Thunder Smash"
+    /// Class inherited from AbilityBase, represents the "Thunder Smash" ability.
     /// </summary>
     public class ThunderSmash : AbilityBase
     {
@@ -25,7 +25,7 @@ namespace HeroEngine.Core.Classes
 
         public override void ExecuteAbility(string heroName)
         {
-            int damage = _damage + (int) Rarity;
+            int damage = _damage + (int)Rarity;
 
             Console.WriteLine($"Activating {Name} '' {Rarity}...");
             Console.WriteLine($"{heroName} channels the storm! {damage} lightning damage to all enemies!");

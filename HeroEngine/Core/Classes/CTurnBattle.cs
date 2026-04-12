@@ -5,45 +5,41 @@ namespace HeroEngine.Core.Classes
     public class CTurnBattle
     {
         private AHeroes heroe;
-        private AEnemies enemigo;
+        private AEnemies enemy;
 
         public CTurnBattle(AHeroes heroe, AEnemies enemigo)
         {
             this.heroe = heroe;
-            this.enemigo = enemigo;
+            this.enemy = enemigo;
         }
 
         /// <summary>
-        /// El método espera los dos daños que se usarán en cada turno, el turno se alternará entre el héroe y el enemigo, y cada uno atacará al otro utilizando el daño especificado. El método continuará hasta que uno de los combatientes quede sin salud, momento en el cual se declarará al ganador. Además, después de cada ataque, 
-        /// se mostrará la salud actual de ambos combatientes para que el jugador pueda seguir el progreso de la batalla.
+        /// This function BattleStart is used to start the turn-based battle between the hero and the enemy.
         /// </summary>
-        /// <param name="heroDamage">El daño que infligirá el héroe en su turno</param>
-        /// <param name="enemyDamage">El daño que infligirá el enemigo en su turno</param>
         public void BattleStart()
         {
-            int turno = 1; // 1 = héroe, 2 = enemigo
+            int turno = 1; // 1 = hero, 2 = enemy
 
-            while (heroe.IsAlive() && enemigo.IsAlive())
+            while (heroe.IsAlive() && enemy.IsAlive())
             {
                 if (turno == 1)
                 {
-                    Console.WriteLine($"\n{heroe.Name} ataca!");
-                    heroe.Attack(enemigo);
+                    Console.WriteLine($"\n{heroe.Name} attacks!");
+                    heroe.Attack(enemy);
                     turno = 2;
                 }
                 else
                 {
-                    Console.WriteLine($"\n{enemigo.Name} ataca!");
-                    enemigo.Attack(heroe);
+                    Console.WriteLine($"\n{enemy.Name} attacks!");
+                    enemy.Attack(heroe);
                     turno = 1;
                 }
 
-                Console.WriteLine($"Heroe vida: {heroe.Health} | Enemigo vida: {enemigo.Health}");
-                Console.ReadLine(); // pausa para ver el resultado
+                Console.WriteLine($"Hero health: {heroe.Health} | Enemy health: {enemy.Health}");
+                Console.ReadLine(); // pause to see the result
             }
 
-            Console.WriteLine(heroe.IsAlive() ? "¡Has ganadi :]" : "Perdiste :[");
+            Console.WriteLine(heroe.IsAlive() ? "You won :]" : "You lost :[");
         }
     }
 }
-

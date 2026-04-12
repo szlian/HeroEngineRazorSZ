@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HeroEngine.Core.Classes.Enums
 {
     /// <summary>
-    /// El AbilityType enum categoriza las habilidades de los héroes en diferentes tipos, como ataque, defensa, curación y soporte, lo que permite a los desarrolladores y jugadores entender rápidamente la función principal de cada habilidad dentro del juego.
+    /// The AbilityType enum categorizes hero abilities into different types, such as attack, defense, healing, and support, allowing developers and players to quickly understand the main function of each ability within the game.
     /// </summary>
     public enum AbilityType
     {

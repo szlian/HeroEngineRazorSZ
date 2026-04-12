@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HeroEngine.Core.Classes.Enums
 {
     /// <summary>
-    /// Este clase enum muestra y da un id a las habilidades y les otorga una rareza
+    /// This enum class assigns an ID to abilities and gives them a rarity level.
     /// </summary>
     public enum Rarity
     {

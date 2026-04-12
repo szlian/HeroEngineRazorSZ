@@ -9,7 +9,7 @@ namespace HeroEngine.Core.Classes.Interface
 {
 
     /// <summary>
-    /// El interfaz de IAbility define la funcionalidad base para una habilidad que puede ser utilizada por un héroe, incluyendo propiedades para el nombre, tipo, rareza y coste, así como un método para ejecutar la habilidad.
+    /// The IAbility interface defines the base functionality for an ability that can be used by a hero, including properties for name, type, rarity, and cost, as well as a method to execute the ability.
     /// </summary>
     public interface IAbility
     {

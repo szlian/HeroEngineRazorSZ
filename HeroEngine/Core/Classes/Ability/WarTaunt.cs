@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace HeroEngine.Core.Classes.Hability
 {
     /// <summary>
-    /// Clase heredado de AbilityBase, representa la habilidad "War Taunt"
+    /// Class inherited from AbilityBase, represents the "War Taunt" ability.
     /// </summary>
     public class WarTaunt : AbilityBase
     {
-        //El variable tiene el _ en su nombre para saber que es un campo privado
+        // The variable uses the _ prefix in its name to indicate that it is a private field
         private int _agro = 20;
         public override string Name => "WarTaunt";
 
@@ -26,7 +26,7 @@ namespace HeroEngine.Core.Classes.Hability
         {
             int agro = _agro + (int)Rarity;
             Console.WriteLine($"Activating '{Name}' {Rarity}...");
-            Console.WriteLine($"{heroName} Provoke all enemies");
+            Console.WriteLine($"{heroName} provokes all enemies");
         }
     }
 }

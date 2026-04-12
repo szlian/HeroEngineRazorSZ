@@ -1,72 +1,104 @@
 ﻿using HeroEngine.Core.Classes;
+using HeroEngine.Core.Classes.Enemies;
 using HeroEngine.Core.Classes.Hability;
 using HeroEngine.Core.Classes.HeroEngine.Core.Classes;
 using HeroEngine.Core.Classes.Heroes;
-using HeroEngine.Core.Classes.Enemies;
-
 using HeroEngine.Core.Classes.Interface;
 
 public class Program
 {
-       public static void Main()
+    public static void Main()
     {
-        // Create instances of heroes
-        CWarrior warrior1 = new CWarrior("King Denas", 120, 1, 120);
-        warrior1.Present();
-        CRogue rogue1 = new CRogue("Luna", 100, 10);
-        rogue1.Present();
-        // Create instances of enemies
-        CBosses boss1 = new CBosses("Asgore", 150, 20);
-        boss1.Present();
+        Console.WriteLine("=====================================");
+        Console.WriteLine("       HERO ENGINE TEST SUITE        ");
+        Console.WriteLine("=====================================\n");
 
-        CMage mage1 = new CMage("Vez'Nan", 80, 1, 100, 300);
-        mage1.Present();
+        // ================= HEROES =================
+        Console.WriteLine("----- HERO CREATION TESTS -----");
 
-        // Simulate an attack
-        Console.WriteLine("-------- Attack Heroes Phase -------");
-        warrior1.Attack(mage1);
-        mage1.Attack(warrior1);
-        rogue1.Attack(boss1);
+        CWarrior warrior = new CWarrior("King Denas", 120, 1, 20);
+        CRogue rogue = new CRogue("Luna", 100, 10);
+        CMage mage = new CMage("Vez'Nan", 80, 1, 100, 300);
 
-        Console.WriteLine("-------- Attack Enemy Phase -------");
-        warrior1.Attack(boss1);
+        warrior.Present();
+        rogue.Present();
+        mage.Present();
 
-        // Create an instance of an ability
-        Console.WriteLine("-----------------------------------");
-        IAbility ability1 = new ThunderSmash();
-        IAbility ability2 = new IronFortress();
-        IAbility ability3 = new WarTaunt();
-        IAbility ability4 = new SecondWind();
+        // ================= ENEMIES =================
+        Console.WriteLine("\n----- ENEMY CREATION TESTS -----");
 
+        CBosses boss = new CBosses("Asgore", 150, 20);
+        CMinions minion = new CMinions("Kortz", 50, 1);
+        CElites elite = new CElites("Redd White", 120, 5);
 
-        warrior1.AddAbility(ability1);
-        warrior1.AddAbility(ability2);
-        Console.WriteLine("-----------Hability List -----------");
-        warrior1.ListAbilities();
-        Console.WriteLine("-------------------------------------");
+        boss.Present();
+        minion.Present();
+        elite.Present();
 
-        // Use the ability
+        // ================= BASIC ATTACK TESTS =================
+        Console.WriteLine("\n----- BASIC ATTACK TESTS -----");
 
-        warrior1.UseAbility("Thunder Smash");
-        warrior1.UseAbility("Iron Fortress");
+        warrior.Attack(mage);
+        mage.Attack(warrior);
+        rogue.Attack(boss);
 
+        Console.WriteLine($"\nAfter attacks:");
+        Console.WriteLine($"Warrior HP: {warrior.Health}");
+        Console.WriteLine($"Mage HP: {mage.Health}");
+        Console.WriteLine($"Boss HP: {boss.Health}");
 
-        CRogue Rogue1 = new CRogue ("Phoenix Wright", 100, 1);
-        CBosses Boss2 = new CBosses ("Flowey", 150, 50);
+        // ================= ABILITY SYSTEM TESTS =================
+        Console.WriteLine("\n----- ABILITY SYSTEM TESTS -----");
 
-        CWarrior Warrior2 = new CWarrior ("Guts", 150, 1, 150);
-        CBosses Boss3 = new CBosses ("Doom", 200, 70);
+        warrior.AddAbility(new ThunderSmash());
+        warrior.AddAbility(new IronFortress());
+        warrior.AddAbility(new WarTaunt()); // duplicate test
+        warrior.AddAbility(new WarTaunt()); // should be ignored
 
-        //Duelo entre Rogue1 y Boss2, 1 vs 1
-        /*Console.WriteLine("----------- Duel Phase, fight for your honor ------------");
-        CTurnBattle battle = new CTurnBattle(Rogue1, Boss2);
-        Rogue1.Present();
-        Boss2.Present();
-        battle.BattleStart(100, 30);*/
-        Console.WriteLine("----------- Duel Phase, fight for your honor ------------");
-        CTurnBattle battle2 = new CTurnBattle(rogue1, Boss3);
-        rogue1.Present();
-        Boss3.Present();
+        Console.WriteLine("\n--- Warrior Ability List ---");
+        warrior.ListAbilities();
+
+        Console.WriteLine("\n--- Using Abilities ---");
+        warrior.UseAbility("Thunder Smash");
+        warrior.UseAbility("Iron Fortress");
+        warrior.UseAbility("WarTaunt");
+
+        // ================= EDGE CASE TESTS =================
+        Console.WriteLine("\n----- EDGE CASE TESTS -----");
+
+        Console.WriteLine("Testing invalid ability:");
+        warrior.UseAbility("NonExistingAbility"); // should do nothing safely
+
+        Console.WriteLine("\nTesting dead combatant:");
+        mage.TakeDamage(9999);
+        mage.Attack(warrior); // should not attack if dead
+
+        Console.WriteLine($"Mage alive? {mage.IsAlive()}");
+
+        // ================= TURN BATTLE TESTS =================
+        Console.WriteLine("\n----- TURN BATTLE TESTS -----");
+
+        CRogue duelRogue = new CRogue("Phoenix Wright", 100, 1);
+        CBosses duelBoss = new CBosses("Flowey", 150, 5);
+
+        duelRogue.Present();
+        duelBoss.Present();
+
+        CTurnBattle battle1 = new CTurnBattle(duelRogue, duelBoss);
+        battle1.BattleStart();
+
+        // ================= SECOND BATTLE =================
+        Console.WriteLine("\n----- EPIC BATTLE 2 -----");
+
+        CWarrior guts = new CWarrior("Sonaris", 150, 1, 25);
+        CBosses doom = new CBosses("Doom", 200, 10);
+
+        CTurnBattle battle2 = new CTurnBattle(guts, doom);
         battle2.BattleStart();
+
+        // ================= FINAL SUMMARY =================
+        Console.WriteLine("\n=====================================");
+        Console.WriteLine("            TESTS FINISHED           ");
+        Console.WriteLine("=====================================");
     }
 }

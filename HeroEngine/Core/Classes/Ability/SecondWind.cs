@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace HeroEngine.Core.Classes.Hability
 {
     /// <summary>
-    /// Clase heredado de AbilityBase, representa la habilidad "Second Wind"
+    /// Class inherited from AbilityBase, represents the "Second Wind" ability.
     /// </summary>
     public class SecondWind : AbilityBase
     {
@@ -25,7 +25,7 @@ namespace HeroEngine.Core.Classes.Hability
         {
             int healing = _healing + (int)Rarity;
             Console.WriteLine($"Activating '{Name}' {Rarity}...");
-            Console.WriteLine($"{heroName} Heals an ally granting the nature blessing");
+            Console.WriteLine($"{heroName} heals an ally, granting the blessing of nature");
         }
     }
 }
