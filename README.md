@@ -1,4 +1,4 @@
-# 🧙 HeroEngine
+# --- HeroEngine ---
 
 ## 📌 Project Description
 
