@@ -74,4 +74,3 @@ The project includes a UML class diagram that shows:
 1. Open the project in Visual Studio
 2. Select the `HeroEngine` project
 
-dotnet run
