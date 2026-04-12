@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace HeroEngine.Core.Classes
 {
-
     /// <summary>
     /// Class inherited from ACombatant, represents the heroes in the game, and contains a dictionary to store their abilities.
     /// </summary>
