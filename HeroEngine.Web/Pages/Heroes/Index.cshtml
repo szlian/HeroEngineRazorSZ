@@ -1,0 +1,32 @@
+﻿@page
+@model HeroEngine.Web.Pages.Heroes.IndexModel
+
+<h1>Hero Registry</h1>
+
+<p>
+    <a asp-page="Create">Create New Hero</a>
+</p>
+
+@if (Model.Heroes.Count == 0)
+{
+    <p>No heroes found in heroes.json</p>
+}
+else
+{
+    <p>Total heroes: @Model.Heroes.Count</p>
+
+    <ul>
+        @foreach (var hero in Model.Heroes)
+        {
+            <li>
+                <b>@hero.Name</b> -
+                @hero.GetType().Name -
+                Level: @hero.Lvl -
+                HP: @hero.Health -
+                Abilities: @hero.Abilities.Count()
+
+                <a asp-page="Detail" asp-route-name="@hero.Name">View</a>
+            </li>
+        }
+    </ul>
+}

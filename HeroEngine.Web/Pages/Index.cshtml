@@ -1,0 +1,45 @@
+﻿@page
+@model HeroEngine.Web.Pages.IndexModel
+
+<h1>HeroEngine</h1>
+
+<p>Turn-based combat engine with Razor Pages</p>
+
+<hr />
+
+@if (Model.HeroCount == 0)
+{
+    <p>No heroes found in heroes.json</p>
+    <a asp-page="/Heroes/Create">Create Hero</a>
+}
+else
+{
+    <p>Total heroes: @Model.HeroCount</p>
+
+    <ul>
+        @foreach (var hero in Model.Heroes)
+        {
+            <li>
+                <b>@hero.Name</b> -
+                @hero.GetType().Name -
+                Lvl: @hero.Lvl -
+                HP: @hero.Health
+
+                <a asp-page="/Heroes/Detail" asp-route-name="@hero.Name">
+                    Details
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+<hr />
+
+<h3>Menu</h3>
+
+<ul>
+    <li><a asp-page="/Heroes/Create">Create Hero</a></li>
+    <li><a asp-page="/Combat">Start Combat</a></li>
+    <li><a asp-page="/Stats">View Stats</a></li>
+    <li><a asp-page="/Files">Files</a></li>
+</ul>

@@ -14,6 +14,8 @@ namespace HeroEngine.Core.Classes
     {
         // Dictionary to store the hero's abilities, using the ability name as the key
         private Dictionary<string, IAbility> abilities = new Dictionary<string, IAbility>();
+        // Nova propietat per llegir les habilitats sense modificar la lògica
+        public IEnumerable<IAbility> Abilities => abilities.Values;
 
 
         /// <summary>

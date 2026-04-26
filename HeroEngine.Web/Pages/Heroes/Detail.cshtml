@@ -1,0 +1,56 @@
+@page "{name}"
+@model HeroEngine.Web.Pages.Heroes.DetailModel
+
+<h1>Hero Detail</h1>
+
+@if (Model.Hero == null)
+{
+    <p>Hero not found.</p>
+    <a asp-page="Index">Back</a>
+}
+else
+{
+    <h2>@Model.Hero.Name</h2>
+
+    <p>Class: @Model.Hero.GetType().Name</p>
+    <p>Level: @Model.Hero.Lvl</p>
+    <p>Health: @Model.Hero.Health</p>
+
+    @if (Model.Hero is HeroEngine.Core.Classes.Heroes.CWarrior warrior)
+    {
+        <p>Armor: @warrior.Armor</p>
+    }
+
+    <hr />
+
+    <h3>Abilities</h3>
+
+    @if (Model.HeroAbilities.Count == 0)
+    {
+        <p>No abilities</p>
+    }
+    else
+    {
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Rarity</th>
+                <th>Cost</th>
+            </tr>
+
+            @foreach (var ability in Model.HeroAbilities)
+            {
+                <tr>
+                    <td>@ability.Name</td>
+                    <td>@ability.Type</td>
+                    <td>@ability.Rarity</td>
+                    <td>@ability.Cost</td>
+                </tr>
+            }
+        </table>
+    }
+
+    <br />
+    <a asp-page="Index">Back</a>
+}

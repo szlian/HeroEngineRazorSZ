@@ -4,6 +4,8 @@ using HeroEngine.Core.Classes.Hability;
 using HeroEngine.Core.Classes.HeroEngine.Core.Classes;
 using HeroEngine.Core.Classes.Heroes;
 using HeroEngine.Core.Classes.Interface;
+using HeroEngine.Core.Data;
+using HeroEngine.Core.Combat;
 
 public class Program
 {
@@ -100,5 +102,7 @@ public class Program
         Console.WriteLine("\n=====================================");
         Console.WriteLine("            TESTS FINISHED           ");
         Console.WriteLine("=====================================");
+
+
     }
 }
