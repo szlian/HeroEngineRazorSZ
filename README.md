@@ -17,5 +17,7 @@ Extension of the HeroEngine project (PP7) with Razor Pages and file persistence.
 2. Set **HeroEngine.Web** as startup project (right‑click → Set as Startup Project).
 4. Press F5 or run from terminal:
 
+If that doesn't work, create a new project, right-click on the solution, then add an existing project, and locate HeroEngine.csproj and HeroEngine.Web.csproj.
+
 ## Previous HeroEngine
 https://github.com/szlian/HeroEngine.git
