@@ -1,0 +1,56 @@
+@page
+@model HeroEngine.Web.Pages.CombatModel
+
+<h1>Combat Simulator</h1>
+
+@if (Model.Heroes.Count == 0)
+{
+    <p>No heroes available. Create one first.</p>
+}
+else
+{
+    <form method="post">
+
+        <p>Select Hero:</p>
+        <select asp-for="SelectedHero">
+            <option value="">-- choose --</option>
+            @foreach (var hero in Model.Heroes)
+            {
+                <option value="@hero.Name">@hero.Name</option>
+            }
+        </select>
+
+        <br /><br />
+
+        <p>Enemy Name:</p>
+        <input asp-for="EnemyName" />
+
+        <br /><br />
+
+        <p>Enemy Level:</p>
+        <input asp-for="EnemyLevel" type="number" />
+
+        <br /><br />
+
+        <button type="submit">Start Combat</button>
+    </form>
+}
+
+<hr />
+
+@if (!string.IsNullOrEmpty(Model.CombatLog))
+{
+    <h3>Combat Log</h3>
+    <pre>@Model.CombatLog</pre>
+}
+
+@if (Model.LastResult != null)
+{
+    <h3>Result</h3>
+
+    <p>Hero: @Model.LastResult.HeroName</p>
+    <p>Enemy: @Model.LastResult.EnemyName</p>
+    <p>Winner: @(Model.LastResult.HeroWon ? "Hero" : "Enemy")</p>
+    <p>Rounds: @Model.LastResult.TotalRounds</p>
+    <p>Damage: @Model.LastResult.TotalDamageDealt</p>
+}

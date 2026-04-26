@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../HeroEngine.Web/HeroEngine.Web.csproj" />
+  <Project Path="../HeroEngine/HeroEngine.csproj" />
+</Solution>

@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="HeroEngine/HeroEngine.csproj" />
+  <Project Path="../../../../../../source/repos/HeroEngineRazor/HeroEngine.Web/HeroEngine.Web.csproj" Id="f3b26213-239a-42f9-ba9e-17c4d305ddcd" />
+  <Project Path="../../../../../../source/repos/HeroEngineRazor/HeroEngine/HeroEngine.csproj" />
 </Solution>

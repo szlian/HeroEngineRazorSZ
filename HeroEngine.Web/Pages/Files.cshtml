@@ -1,0 +1,67 @@
+@page
+@model HeroEngine.Web.Pages.FilesModel
+
+<h1>File Management</h1>
+
+<hr />
+
+<h2>Game Config (XML)</h2>
+
+<form method="post" asp-page-handler="Config">
+
+    <p>Level Multiplier:</p>
+    <input asp-for="LevelMultiplier" />
+
+    <p>Critical Hit Chance:</p>
+    <input asp-for="CriticalHitChance" />
+
+    <p>Max Combat Rounds:</p>
+    <input asp-for="MaxCombatRounds" type="number" />
+
+    <p>Max Heroes Per Battle:</p>
+    <input asp-for="MaxHeroesPerBattle" type="number" />
+
+    <br /><br />
+
+    <button type="submit">Save Config</button>
+</form>
+
+<hr />
+
+<h2>Combat Log (TXT)</h2>
+
+@if (string.IsNullOrWhiteSpace(Model.CombatLogText))
+{
+    <p>No combat log found.</p>
+    <p>Play a battle in Combat page.</p>
+}
+else
+{
+    <pre style="font-size:12px;">
+        @Model.CombatLogText
+    </pre>
+}
+
+<hr />
+
+<h2>Combat Stats (CSV)</h2>
+
+@if (Model.CombatStats.Count == 0)
+{
+    <p>No stats found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var stat in Model.CombatStats)
+        {
+            <li style="color:@(stat.HeroWon ? "green" : "red")">
+                @stat.Date.ToString("yyyy-MM-dd HH:mm") -
+                @stat.HeroName vs @stat.EnemyName -
+                @(stat.HeroWon ? "Win" : "Loss") -
+                Rounds: @stat.TotalRounds -
+                Damage: @stat.TotalDamageDealt
+            </li>
+        }
+    </ul>
+}
