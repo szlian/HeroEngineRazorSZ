@@ -11,6 +11,8 @@ namespace VideoGameManager.Services
     
     public Game? GetById(int id) => _games.FirstOrDefault(g => g.Id == id);
     
+
+
     public void Add(Game game)
     {
         game.Id = _nextId++;
@@ -22,8 +24,15 @@ namespace VideoGameManager.Services
         var index = _games.FindIndex(g => g.Id == game.Id);
         if (index != -1) _games[index] = game;
     }
-    
-    public void Delete(int id) => _games.RemoveAll(g => g.Id == id);
+
+        public void LoadGames(List<Game> games)
+        {
+            _games.Clear();
+            _games.AddRange(games);
+            _nextId = games.Count > 0 ? games.Max(g => g.Id) + 1 : 1;
+        }
+
+        public void Delete(int id) => _games.RemoveAll(g => g.Id == id);
 
         private void LogActivity(string action, string title)
         {
