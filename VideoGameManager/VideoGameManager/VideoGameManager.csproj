@@ -16,5 +16,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\data\" />
   </ItemGroup>
+	
 
 </Project>
